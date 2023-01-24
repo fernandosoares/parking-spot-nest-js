@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Spot {
+  id                String   @id @default(uuid())
+  spot_number       String   @db.VarChar(5)
+  car_brand         String   @db.VarChar(255)
+  car_model         String   @db.VarChar(255)
+  car_color         String   @db.VarChar(255)
+  car_license_plate String   @db.VarChar(7)
+  apartment         String   @db.VarChar(5)
+  tower             String   @db.VarChar(5)
+  owner             String   @db.VarChar(255)
+  created_at        DateTime @default(now())
+  updated_at        DateTime @default(now()) @updatedAt
+
+  @@map("spots")
+}
