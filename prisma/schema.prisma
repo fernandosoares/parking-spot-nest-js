@@ -6,20 +6,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model Spot {
   id                String   @id @default(uuid())
-  spot_number       String   @db.VarChar(5)
-  car_brand         String   @db.VarChar(255)
-  car_model         String   @db.VarChar(255)
-  car_color         String   @db.VarChar(255)
-  car_license_plate String   @db.VarChar(7)
-  apartment         String   @db.VarChar(5)
-  tower             String   @db.VarChar(5)
-  owner             String   @db.VarChar(255)
+  spot_number       String
+  car_brand         String
+  car_model         String
+  car_color         String
+  car_license_plate String
+  apartment         String
+  tower             String
+  owner             String
   created_at        DateTime @default(now())
   updated_at        DateTime @default(now()) @updatedAt
 
